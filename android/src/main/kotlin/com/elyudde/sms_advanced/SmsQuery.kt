@@ -85,7 +85,7 @@ internal class SmsQueryHandler(
             result.error("#01", "permission denied", null)
             return
         }
-        if (!cursor.movetoFirst()) {
+        if (!cursor.moveToFirst()) {
         // if (!cursor.movetoLast()) {
             cursor.close()
             result.success(list)
