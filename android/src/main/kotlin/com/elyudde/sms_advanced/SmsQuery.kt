@@ -85,11 +85,12 @@ internal class SmsQueryHandler(
             result.error("#01", "permission denied", null)
             return
         }
-        if (!cursor.moveToFirst()) {
+        if (!cursor.movetoLast()) {
             cursor.close()
             result.success(list)
             return
         }
+
         do {
             val obj = readSms(cursor)
             try {
@@ -110,7 +111,8 @@ internal class SmsQueryHandler(
             if (count > 0) {
                 count--
             }
-        } while (cursor.moveToNext() && count != 0)
+        // } while (cursor.moveToNext() && count != 0)
+        } while (cursor.movetoPrevious() && count != 0)
         cursor.close()
         result.success(list)
     }
