@@ -85,7 +85,8 @@ internal class SmsQueryHandler(
             result.error("#01", "permission denied", null)
             return
         }
-        if (!cursor.movetoLast()) {
+        if (!cursor.movetoFirst()) {
+        // if (!cursor.movetoLast()) {
             cursor.close()
             result.success(list)
             return
@@ -111,8 +112,8 @@ internal class SmsQueryHandler(
             if (count > 0) {
                 count--
             }
-        // } while (cursor.moveToNext() && count != 0)
-        } while (cursor.movetoPrevious() && count != 0)
+        } while (cursor.moveToNext() && count != 0)
+        // } while (cursor.movetoPrevious() && count != 0)
         cursor.close()
         result.success(list)
     }
